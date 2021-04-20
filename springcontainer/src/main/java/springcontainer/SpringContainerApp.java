@@ -10,7 +10,8 @@ public class SpringContainerApp {
 
 	public static void main(String[] args) {
 		//testBeanFactory();
-		testApplicationContext();
+		//testApplicationContext();
+		testBeanFactory2();
 	}
 	
 	private  static void testApplicationContext() {
@@ -72,5 +73,13 @@ public class SpringContainerApp {
 		//name 으로 얻어오기
 		user=(User)bf.getBean("member");//name이 user인 bean 횟득
 		System.out.println("by name:"+user);
+	}
+	
+	private static void testBeanFactory2() {
+		BeanFactory bf =
+				new XmlBeanFactory(new ClassPathResource("config/applicationContext2.xml"));
+		
+		User user = (User)bf.getBean("user");
+		System.out.println("by Component Scan:" + user);
 	}
 }
